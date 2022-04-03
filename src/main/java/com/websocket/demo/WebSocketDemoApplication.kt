@@ -1,13 +1,11 @@
-package com.websocket.demo;
+package com.websocket.demo
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.SpringApplication
+import org.springframework.boot.autoconfigure.SpringBootApplication
 
 @SpringBootApplication
-public class WebSocketDemoApplication {
+open class WebSocketDemoApplication
 
-    public static void main(String[] args) {
-        SpringApplication.run(WebSocketDemoApplication.class, args);
-    }
-
+fun main(args: Array<String>) {
+    SpringApplication.run(WebSocketDemoApplication::class.java, *args)
 }

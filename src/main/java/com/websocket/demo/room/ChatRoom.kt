@@ -1,23 +1,16 @@
-package com.websocket.demo.room;
+package com.websocket.demo.room
 
-import lombok.*;
+import java.time.LocalDateTime
 
-import java.time.LocalDateTime;
+data class ChatRoom(var id: String,
+                    var title: String?,
+                    var lastModifiedAt: LocalDateTime?,
+                    var createdAt: LocalDateTime?
+) {
 
-@Getter
-@ToString
-@NoArgsConstructor
-@AllArgsConstructor
-public final class ChatRoom {
-    private String id;
-    private String title;
-    private LocalDateTime lastModifiedAt;
-    private LocalDateTime createdAt;
-
+    constructor(): this("", null, null, null)
     /**
      * for redis deserialize
      */
-    public ChatRoom(String id) {
-        this.id = id;
-    }
+    constructor(id: String): this(id, null, null, null)
 }

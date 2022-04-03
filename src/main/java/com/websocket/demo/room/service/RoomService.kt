@@ -1,27 +1,21 @@
-package com.websocket.demo.room.service;
+package com.websocket.demo.room.service
 
-import com.websocket.demo.room.ChatRoom;
-import com.websocket.demo.room.repository.RoomRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
+import com.websocket.demo.room.ChatRoom
+import com.websocket.demo.room.repository.RoomRepository
+import org.springframework.stereotype.Service
 
 @Service
-@RequiredArgsConstructor
-public class RoomService {
+open class RoomService(private val roomRepository: RoomRepository) {
 
-    private final RoomRepository roomRepository;
-
-    public List<ChatRoom> findAll() {
-        return roomRepository.findAll();
+    fun findAll(): List<ChatRoom> {
+        return roomRepository.findAll()
     }
 
-    public ChatRoom findById(String id) {
-        return roomRepository.findById(id);
+    fun findById(id: String?): ChatRoom {
+        return roomRepository.findById(id!!)
     }
 
-    public String create(String title) {
-        return roomRepository.create(title);
+    fun create(title: String?): String {
+        return roomRepository.create(title!!)
     }
 }
