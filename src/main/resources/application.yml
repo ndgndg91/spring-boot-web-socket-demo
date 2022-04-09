@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    open-in-view: false
+  datasource:
+    username: ${USERNAME:root}
+    password: ${PASSWORD:chat}
+    url: jdbc:mysql://${DATABASE_URL:localhost}:3306/chat
+    driver-class-name: com.mysql.cj.jdbc.Driver
