@@ -8,22 +8,23 @@ import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 
-@Configuration
+//@Configuration
 open class CorsConfig {
 
-    @Bean
-    open fun corsFilter(): FilterRegistrationBean<CorsFilter> {
-        val urlBasedCorsConfigurationSource = UrlBasedCorsConfigurationSource()
-        val config = CorsConfiguration()
-        config.allowedOrigins = mutableListOf("http://localhost:4200")
-        config.allowedHeaders = mutableListOf("*")
-        config.allowedMethods = mutableListOf("*")
-        config.allowCredentials = true
-        config.maxAge = 3600
-        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", config)
-        val corsFilter = CorsFilter(urlBasedCorsConfigurationSource)
-        val filterRegistrationBean = FilterRegistrationBean(corsFilter)
-        filterRegistrationBean.order = OrderedFilter.HIGHEST_PRECEDENCE
-        return filterRegistrationBean
-    }
+    // spring security 를 사용하지 않을 때.
+//    @Bean
+//    open fun corsFilter(): FilterRegistrationBean<CorsFilter> {
+//        val urlBasedCorsConfigurationSource = UrlBasedCorsConfigurationSource()
+//        val config = CorsConfiguration()
+//        config.allowedOrigins = mutableListOf("http://localhost:4200")
+//        config.allowedHeaders = mutableListOf("*")
+//        config.allowedMethods = mutableListOf("*")
+//        config.allowCredentials = true
+//        config.maxAge = 3600
+//        urlBasedCorsConfigurationSource.registerCorsConfiguration("/**", config)
+//        val corsFilter = CorsFilter(urlBasedCorsConfigurationSource)
+//        val filterRegistrationBean = FilterRegistrationBean(corsFilter)
+//        filterRegistrationBean.order = OrderedFilter.HIGHEST_PRECEDENCE
+//        return filterRegistrationBean
+//    }
 }

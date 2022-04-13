@@ -6,11 +6,15 @@ import com.websocket.demo.room.exception.ServiceException
 import com.websocket.demo.user.User
 import com.websocket.demo.user.repository.UserRepository
 import org.springframework.http.HttpStatus
+import org.springframework.security.crypto.password.PasswordEncoder
 import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-open class UserService(private val userRepository: UserRepository) {
+open class UserService(
+    private val userRepository: UserRepository,
+    private val passwordEncoder: PasswordEncoder
+) {
 
     @Transactional(readOnly = true)
     open fun signIn(username: String, password: String): String {
@@ -19,7 +23,10 @@ open class UserService(private val userRepository: UserRepository) {
             "can't find user by $username"
         )
 
-        // TODO 비밀번호 확인
+        if (passwordEncoder.matches(password, user.password)) {
+            throw ServiceException(HttpStatus.UNAUTHORIZED.value(), "username or password is invalid")
+        }
+
         return JwtHelper.createJwt(user.id!!, user.username)
     }
 
@@ -28,8 +35,7 @@ open class UserService(private val userRepository: UserRepository) {
         if (userRepository.findByUsername(username).isNotNull())
             throw ServiceException(HttpStatus.BAD_REQUEST.value(), "$username is already exists.")
 
-        // TODO 비밀번호 해싱
-        val user = User(nickname, username, password)
+        val user = User(nickname, username, passwordEncoder.encode(password))
         userRepository.save(user)
         return JwtHelper.createJwt(user.id!!, user.username)
     }
