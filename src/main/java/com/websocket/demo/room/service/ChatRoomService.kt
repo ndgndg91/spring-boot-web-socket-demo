@@ -10,7 +10,7 @@ import java.util.*
 import javax.annotation.PostConstruct
 
 @Service
-open class ChatRoomService(
+class ChatRoomService(
     private val chatRoomRepository: ChatRoomRepository
 ) {
 

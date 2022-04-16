@@ -9,7 +9,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 import org.springframework.web.filter.CorsFilter
 
 //@Configuration
-open class CorsConfig {
+class CorsConfig {
 
     // spring security 를 사용하지 않을 때.
 //    @Bean

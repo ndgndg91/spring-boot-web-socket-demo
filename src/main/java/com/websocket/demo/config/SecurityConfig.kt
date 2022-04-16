@@ -15,10 +15,10 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 @EnableWebSecurity
 @Configuration
-open class SecurityConfig: WebSecurityConfigurerAdapter() {
+class SecurityConfig: WebSecurityConfigurerAdapter() {
 
     @Bean
-    open fun passwordEncoder(): PasswordEncoder {
+    fun passwordEncoder(): PasswordEncoder {
         return BCryptPasswordEncoder()
     }
 
@@ -37,7 +37,7 @@ open class SecurityConfig: WebSecurityConfigurerAdapter() {
     }
 
     @Bean
-    open fun corsConfigurationSource(): CorsConfigurationSource {
+    fun corsConfigurationSource(): CorsConfigurationSource {
         val configuration = CorsConfiguration()
         configuration.allowedOriginPatterns = listOf(
             "http://localhost:4200",  // local

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*
 import java.net.URI
 
 @RestController
-open class ChatRoomController(private val roomService: ChatRoomService) {
+class ChatRoomController(private val roomService: ChatRoomService) {
 
     @GetMapping("/apis/chat-rooms")
     fun findRooms(): ResponseEntity<List<ChatRoom>> {

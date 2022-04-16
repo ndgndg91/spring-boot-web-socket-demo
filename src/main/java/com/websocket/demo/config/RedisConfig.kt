@@ -12,15 +12,15 @@ import org.springframework.data.redis.core.RedisTemplate
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer
 
 @Configuration
-open class RedisConfig {
+class RedisConfig {
 
     @Bean
-    open fun lettuceConnectionFactory(): RedisConnectionFactory {
+    fun lettuceConnectionFactory(): RedisConnectionFactory {
         return LettuceConnectionFactory()
     }
 
     @Bean
-    open fun chatRoomRedisTemplate(): RedisTemplate<String, ChatRoom> {
+    fun chatRoomRedisTemplate(): RedisTemplate<String, ChatRoom> {
         val om = ObjectMapper()
         // jsr310 - support JSR310
         om.registerModule(JavaTimeModule())
@@ -40,7 +40,7 @@ open class RedisConfig {
     }
 
     @Bean
-    open fun userRedisTemplate(): RedisTemplate<String, User> {
+    fun userRedisTemplate(): RedisTemplate<String, User> {
         val om = ObjectMapper()
         // jsr310 - support JSR 310
         om.registerModule(JavaTimeModule())

@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 
 @EnableWebSocket
 @Configuration
-open class WebSocketConfig: WebSocketConfigurer {
+class WebSocketConfig: WebSocketConfigurer {
     companion object {
         private const val CHAT_END_POINT = "/chat"
     }
@@ -20,7 +20,7 @@ open class WebSocketConfig: WebSocketConfigurer {
     }
 
     @Bean
-    open fun getChatWebSocketHandler(): ChatWebSocketHandler {
+    fun getChatWebSocketHandler(): ChatWebSocketHandler {
         return ChatWebSocketHandler()
     }
 

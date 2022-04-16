@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service
 import org.springframework.transaction.annotation.Transactional
 
 @Service
-open class UserService(
+class UserService(
     private val userRepository: UserRepository,
     private val passwordEncoder: PasswordEncoder
 ) {
 
     @Transactional(readOnly = true)
-    open fun signIn(username: String, password: String): String {
+    fun signIn(username: String, password: String): String {
         val user = userRepository.findByUsername(username) ?: throw ServiceException(
             HttpStatus.NOT_FOUND.value(),
             "can't find user by $username"
@@ -31,7 +31,7 @@ open class UserService(
     }
 
     @Transactional
-    open fun signUp(username: String, password: String, nickname: String): String {
+    fun signUp(username: String, password: String, nickname: String): String {
         if (userRepository.findByUsername(username).isNotNull())
             throw ServiceException(HttpStatus.BAD_REQUEST.value(), "$username is already exists.")
 
