@@ -7,6 +7,7 @@ import org.springframework.web.socket.TextMessage
 import org.springframework.web.socket.WebSocketSession
 import org.springframework.web.socket.handler.TextWebSocketHandler
 
+// TODO chat room repository 구현
 class ChatWebSocketHandler : TextWebSocketHandler() {
     companion object {
         private val log: Logger = LoggerFactory.getLogger(ChatWebSocketHandler::class.java)
