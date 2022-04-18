@@ -1,11 +1,18 @@
 package com.websocket.demo.room
 
-import org.springframework.data.redis.core.RedisHash
 import java.time.LocalDateTime
+import javax.persistence.*
 
-@RedisHash("rooms")
-data class ChatRoom(var id: String,
-                    var title: String?,
-                    var lastModifiedAt: LocalDateTime?,
-                    var createdAt: LocalDateTime?
-)
+@Entity
+@Table(name = "chat_room")
+class ChatRoom(
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    var id: Long?,
+    var title: String,
+    var lastModifiedAt: LocalDateTime?,
+    var createdAt: LocalDateTime?
+) {
+    constructor(): this(0, "", null,  LocalDateTime.now())
+
+    constructor(title: String): this(null, title, null, LocalDateTime.now())
+}

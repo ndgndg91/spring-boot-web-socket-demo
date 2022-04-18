@@ -5,8 +5,6 @@ import com.websocket.demo.room.exception.ServiceException
 import com.websocket.demo.room.repository.ChatRoomRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
-import java.time.LocalDateTime
-import java.util.*
 import javax.annotation.PostConstruct
 
 @Service
@@ -16,14 +14,17 @@ class ChatRoomService(
 
     @PostConstruct
     fun setUp() {
-        chatRoomRepository.deleteAll()
+        if (chatRoomRepository.findById(1).isPresent) {
+            return
+        }
+
         val chatRooms = listOf(
-            ChatRoom(UUID.randomUUID().toString(), "20대 소통방", null, LocalDateTime.now()),
-            ChatRoom(UUID.randomUUID().toString(), "모바일 던파", null, LocalDateTime.now()),
-            ChatRoom(UUID.randomUUID().toString(), "카트라이더 러쉬 플러스", null, LocalDateTime.now()),
-            ChatRoom(UUID.randomUUID().toString(), "주식 공부방", null, LocalDateTime.now()),
-            ChatRoom(UUID.randomUUID().toString(), "30대 직장인방", null, LocalDateTime.now()),
-            ChatRoom(UUID.randomUUID().toString(), "무엇이든 물어보살", null, LocalDateTime.now())
+            ChatRoom("20대 소통방"),
+            ChatRoom("모바일 던파", ),
+            ChatRoom("카트라이더 러쉬 플러스"),
+            ChatRoom("주식 공부방", ),
+            ChatRoom("30대 직장인방", ),
+            ChatRoom("무엇이든 물어보살", )
         )
 
         chatRoomRepository.saveAll(chatRooms)
@@ -34,7 +35,7 @@ class ChatRoomService(
         return chatRoomRepository.findAll().toList()
     }
 
-    fun findById(id: String): ChatRoom {
+    fun findById(id: Long): ChatRoom {
         return chatRoomRepository.findById(id)
             .orElseThrow {
                 ServiceException(
@@ -44,8 +45,8 @@ class ChatRoomService(
             }
     }
 
-    fun create(title: String): String {
-        val chatRoom = ChatRoom(UUID.randomUUID().toString(), title, null, LocalDateTime.now())
-        return chatRoomRepository.save(chatRoom).id
+    fun create(title: String): Long {
+        val chatRoom = ChatRoom(title)
+        return chatRoomRepository.save(chatRoom).id!!
     }
 }

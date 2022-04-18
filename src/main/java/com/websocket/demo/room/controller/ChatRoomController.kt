@@ -16,7 +16,7 @@ class ChatRoomController(private val roomService: ChatRoomService) {
     }
 
     @GetMapping("/apis/chat-rooms/{id}")
-    fun findById(@PathVariable id: String): ResponseEntity<ChatRoom> {
+    fun findById(@PathVariable id: Long): ResponseEntity<ChatRoom> {
         return ResponseEntity.ok(roomService.findById(id))
     }
 
