@@ -30,7 +30,7 @@ class ChatRoomService(
         chatRoomRepository.saveAll(chatRooms)
     }
 
-    // TODO : chat room sort 기준 만들고 적용하기
+    // TODO : pagination 적용하기
     fun findAll(): List<ChatRoom> {
         return chatRoomRepository.findAll().toList()
     }

@@ -1,17 +1,21 @@
 package com.websocket.demo.handler
 
+import com.websocket.demo.room.repository.ChatRoomRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.stereotype.Component
 import org.springframework.web.socket.CloseStatus
 import org.springframework.web.socket.TextMessage
 import org.springframework.web.socket.WebSocketSession
 import org.springframework.web.socket.handler.TextWebSocketHandler
 
-// TODO chat room repository 구현
-class ChatWebSocketHandler : TextWebSocketHandler() {
+@Component
+class ChatWebSocketHandler(private val chatRoomRepository: ChatRoomRepository) : TextWebSocketHandler() {
     companion object {
         private val log: Logger = LoggerFactory.getLogger(ChatWebSocketHandler::class.java)
     }
+
+    // TODO : chat room 에 따라서 관리하기
     private val webSocketSessions: MutableList<WebSocketSession> = ArrayList()
 
     @Throws(Exception::class)
