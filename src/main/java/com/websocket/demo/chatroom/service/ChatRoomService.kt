@@ -1,8 +1,8 @@
-package com.websocket.demo.room.service
+package com.websocket.demo.chatroom.service
 
-import com.websocket.demo.room.ChatRoom
-import com.websocket.demo.room.exception.ServiceException
-import com.websocket.demo.room.repository.ChatRoomRepository
+import com.websocket.demo.chatroom.ChatRoom
+import com.websocket.demo.chatroom.exception.ServiceException
+import com.websocket.demo.chatroom.repository.ChatRoomRepository
 import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
 import javax.annotation.PostConstruct

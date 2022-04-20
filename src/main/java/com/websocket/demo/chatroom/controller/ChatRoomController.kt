@@ -1,8 +1,8 @@
-package com.websocket.demo.room.controller
+package com.websocket.demo.chatroom.controller
 
-import com.websocket.demo.room.ChatRoom
-import com.websocket.demo.room.controller.dto.request.CreateChatRoomRequest
-import com.websocket.demo.room.service.ChatRoomService
+import com.websocket.demo.chatroom.ChatRoom
+import com.websocket.demo.chatroom.controller.dto.request.CreateChatRoomRequest
+import com.websocket.demo.chatroom.service.ChatRoomService
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 import java.net.URI

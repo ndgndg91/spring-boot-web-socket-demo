@@ -2,7 +2,7 @@ package com.websocket.demo.user.service
 
 import com.websocket.demo.auth.JwtHelper
 import com.websocket.demo.extension.isNotNull
-import com.websocket.demo.room.exception.ServiceException
+import com.websocket.demo.chatroom.exception.ServiceException
 import com.websocket.demo.user.User
 import com.websocket.demo.user.repository.UserRepository
 import org.springframework.http.HttpStatus

@@ -1,7 +1,7 @@
-package com.websocket.demo.room.advisor
+package com.websocket.demo.chatroom.advisor
 
-import com.websocket.demo.room.ApiError
-import com.websocket.demo.room.exception.ServiceException
+import com.websocket.demo.chatroom.ApiError
+import com.websocket.demo.chatroom.exception.ServiceException
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.RestControllerAdvice

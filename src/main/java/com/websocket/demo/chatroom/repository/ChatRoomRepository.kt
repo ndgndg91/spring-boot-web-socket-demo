@@ -1,6 +1,6 @@
-package com.websocket.demo.room.repository
+package com.websocket.demo.chatroom.repository
 
-import com.websocket.demo.room.ChatRoom
+import com.websocket.demo.chatroom.ChatRoom
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.stereotype.Repository
 

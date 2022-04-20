@@ -1,4 +1,4 @@
-package com.websocket.demo.room
+package com.websocket.demo.chatroom
 
 import java.time.LocalDateTime
 import javax.persistence.*

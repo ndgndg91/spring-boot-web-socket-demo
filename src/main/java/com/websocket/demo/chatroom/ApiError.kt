@@ -1,3 +1,3 @@
-package com.websocket.demo.room
+package com.websocket.demo.chatroom
 
 data class ApiError(val message: String)
