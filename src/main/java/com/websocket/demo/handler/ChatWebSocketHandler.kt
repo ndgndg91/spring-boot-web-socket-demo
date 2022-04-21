@@ -40,6 +40,7 @@ class ChatWebSocketHandler(private val chatRoomRepository: ChatRoomRepository, p
         }
 
         liveChatRoom.connect(session)
+        liveChatRoom.clean()
         liveChatRoom.chat(message)
     }
 
