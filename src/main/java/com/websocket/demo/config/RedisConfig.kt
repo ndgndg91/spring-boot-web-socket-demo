@@ -19,7 +19,7 @@ class RedisConfig {
     }
 
     @Bean
-    fun chatRoomRedisTemplate(): RedisTemplate<String, ChatRoom> {
+    fun redisTemplate(): RedisTemplate<String, String> {
         val om = ObjectMapper()
         // jsr310 - support JSR310
         om.registerModule(JavaTimeModule())
@@ -28,7 +28,7 @@ class RedisConfig {
             ChatRoom::class.java
         )
         jackson2JsonRedisSerializer.setObjectMapper(om)
-        val template = RedisTemplate<String, ChatRoom>()
+        val template = RedisTemplate<String, String>()
         template.connectionFactory = lettuceConnectionFactory()
         template.keySerializer = jackson2JsonRedisSerializer
         template.valueSerializer = jackson2JsonRedisSerializer

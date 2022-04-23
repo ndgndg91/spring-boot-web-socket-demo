@@ -18,4 +18,16 @@ CREATE TABLE `chat_room`
     title            VARCHAR(255) NOT NULL,
     last_modified_at datetime              DEFAULT NULL,
     created_at       datetime     NOT NULL DEFAULT NOW()
-)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+CREATE TABLE `chat_room_history`
+(
+    id         BIGINT AUTO_INCREMENT PRIMARY KEY,
+    user_id    BIGINT       NOT NULL,
+    room_id    BIGINT       NOT NULL,
+    writer     varchar(255) NOT NULL,
+    contents   varchar(255) NOT NULL,
+    created_at datetime     NOT NULL DEFAULT NOW()
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
