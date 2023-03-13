@@ -15,6 +15,7 @@ class WebSocketConfig(private val chatWebSocketHandler: ChatWebSocketHandler): W
 
     override fun registerWebSocketHandlers(registry: WebSocketHandlerRegistry) {
         registry.addHandler(chatWebSocketHandler, CHAT_END_POINT)
+            .addInterceptors(PrincipalHandShakeInterceptor())
             .setHandshakeHandler(PrincipalHandShakeHandler())
             .setAllowedOrigins("*")
     }

@@ -18,20 +18,15 @@ class PrincipalHandShakeHandler : DefaultHandshakeHandler() {
         wsHandler: WebSocketHandler,
         attributes: MutableMap<String, Any>
     ): Principal? {
+        logger.info("determin user")
         return try {
-            val accessToken = request.headers[HttpHeaders.AUTHORIZATION]?.first().toAccessToken()
+            val authorizationHeaderValue = request.headers[HttpHeaders.AUTHORIZATION]?.first()
+            val accessToken = (Regex("[B|b]earer (.+)")).find(authorizationHeaderValue!!)?.groupValues?.get(1)
             JwtHelper.toUser(accessToken)
         } catch (e: NoSuchElementException) {
-            return null
+            null
+        } catch (e: NullPointerException) {
+            null
         }
-    }
-}
-
-private fun String?.toAccessToken(): String? {
-    if (this == null) return null
-    return try {
-        Regex("[B|b]earer (.+)").find(this)?.groupValues?.get(1)
-    } catch (e: NullPointerException) {
-        null
     }
 }
