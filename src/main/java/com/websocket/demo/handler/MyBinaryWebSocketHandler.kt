@@ -1,5 +1,6 @@
 package com.websocket.demo.handler
 
+import com.websocket.demo.extension.compress
 import com.websocket.demo.test.TestRepository
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Component
@@ -24,7 +25,10 @@ class MyBinaryWebSocketHandler(
     override fun handleBinaryMessage(session: WebSocketSession, message: BinaryMessage) {
         val from = String(message.payload.array())
         log.info("handleBinaryMessage : {}", from)
-        session.sendMessage(BinaryMessage(repository.findByValid(true).toByteArray()))
+
+        val byteArray = repository.findByValid(true).toByteArray()
+        val compress = byteArray.compress()
+        session.sendMessage(BinaryMessage(compress))
     }
 
     override fun handleMessage(session: WebSocketSession, message: WebSocketMessage<*>) {

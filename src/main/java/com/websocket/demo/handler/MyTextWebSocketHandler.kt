@@ -34,6 +34,7 @@ class MyTextWebSocketHandler(
                 it.timestamp.toBigInteger()
             )
         }
+
         session.sendMessage(TextMessage(om.writeValueAsBytes(testMessage)))
     }
 
