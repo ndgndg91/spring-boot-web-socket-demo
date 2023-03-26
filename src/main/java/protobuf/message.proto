@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package com.websocket.demo.protobuf;
+
+option java_package = "com.websocket.demo.protobuf";
+
+message TestMessage {
+  string message = 1;
+  bool valid = 2;
+  fixed64 timestamp = 3;
+}

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+
+<html lang="en">
+<head>
+
+    <script type = "text/javascript">
+        function WebSocketTest() {
+
+            if ("WebSocket" in window) {
+                const encoder = new TextEncoder();
+                const decoder = new TextDecoder('utf-8');
+                alert("WebSocket is supported by your Browser!");
+
+                // Let us open a web socket
+                const ws = new WebSocket("ws://localhost:8080/binary");
+                ws.binaryType = 'arraybuffer';
+
+                ws.onopen = function() {
+                    // Web Socket is connected, send data using send()
+                    let uint8Array = encoder.encode("Hello Websocket");
+                    ws.send(uint8Array);
+                    console.log("Message is sent...");
+                };
+
+                ws.onmessage = function (message) {
+                    console.log("Message is received...");
+                    const dataString = decoder.decode(message.data);
+                    console.log(dataString);
+                };
+
+                ws.onclose = function() {
+                    // websocket is closed.
+                    console.log("Connection is closed...");
+                };
+
+                const textWs = new WebSocket("ws://localhost:8080/text")
+                textWs.onopen = function() {
+                    // Web Socket is connected, send data using send()
+                    textWs.send("Hello Websocket");
+                    console.log("Message is sent...");
+                };
+
+                textWs.onmessage = function (message) {
+                    console.log("Message is received...");
+                    console.log(message.data);
+                };
+
+                textWs.onclose = function() {
+                    // websocket is closed.
+                    console.log("Connection is closed...");
+                };
+            } else {
+
+                // The browser doesn't support WebSocket
+                alert("WebSocket NOT supported by your Browser!");
+            }
+        }
+    </script>
+    <title>Websocket Demo</title>
+
+</head>
+
+<body>
+<div id = "sse">
+    <a href = "javascript:WebSocketTest()">Run WebSocket</a>
+</div>
+
+</body>
+</html>
